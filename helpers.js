@@ -1,5 +1,8 @@
 const fs = require('fs')
 
+
+console.log(fs.readdirSync('./'))
+
 function configTestBody(body, configs) {
     for (const config of configs) {
         if (repl.analyze(config.body, body)) {

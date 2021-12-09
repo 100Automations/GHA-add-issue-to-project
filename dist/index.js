@@ -6,6 +6,9 @@
 
 const fs = __nccwpck_require__(5747)
 
+
+console.log(fs.readdirSync('./'))
+
 function configTestBody(body, configs) {
     for (const config of configs) {
         if (repl.analyze(config.body, body)) {
