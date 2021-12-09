@@ -1,6 +1,7 @@
 [
     {
         "body": "'### Dependency'/'### Dependencies'",
+        "labels": "'enhancement', !'documentation'",
         "column": 17166972
     }
 ]
