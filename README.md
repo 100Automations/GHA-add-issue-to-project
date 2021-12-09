@@ -46,13 +46,13 @@ Outlined here are the possible criteria keys at this time. Further below are tip
 
 ### Criteria Wording
 
-Criteria are analyzed through a custom logic interpreter, which uses 'and', 'or' and 'not' as part of its key syntax. To demonstrate through an example, the criteria `body: "dependency or dependencies"` means that the body of the issue being analyzed needs to contain the string `dependency` **or** `dependencies` in other to pass the criteria. If the other criteria are also met, then issue will be moved to the column specified in the `column` key.
+Criteria are analyzed through a custom logic interpreter, which uses `and`, `or` and `not` as part of its key syntax. To demonstrate through an example, the criteria `body: "dependency or dependencies"` means that the body of the issue being analyzed needs to contain the string `dependency` **or** `dependencies` in other to pass the criteria. If the other criteria are also met, then issue will be moved to the column specified in the `column` key.
 
 Do note that the criteria are not case-sensitive. For the above criteria, an issue's body containing "dependency" or "Dependency" would both pass the criteria.
 
-In addition to 'and', 'or', and 'not', the interpreter will also accept ',', '/', and '!' respectively in its place. For more complex criteria matching, one can also used '(), [] or {}' to block off code. An example of a complex query could be:
+In addition to `and`, `or`, and `not`, the interpreter will also accept `,`, `/`, and `!` respectively in its place. For more complex criteria matching, one can also used `(), [] or {}` to block off code. An example of a complex query could be:
 
-"('buggy code', dependency) or (enhancement and invalid)"
+`"('buggy code', dependency) or (enhancement and invalid)"`
 
 For the interpreter, since it uses white space to recognize key syntax, it is also recommended to use quotation marks to differentiate between strings. In the above, 'buggy code' is wrapped with quotation marks for the interpreter to understand it as one single phrase, rather than two separate ones. Without the quotations, there would be an error.
 
@@ -77,7 +77,7 @@ For the interpreter, since it uses white space to recognize key syntax, it is al
 
 The easiest way would be to check the column link. This link can be found under `Copy column link` by clicking the `...` button on a column.
 
-<image src='./assets/column-link-example.png' />
+<image src='./assets/column-link-example.png' width="600" height="400" />
 
 This will give you a link like so:
 
