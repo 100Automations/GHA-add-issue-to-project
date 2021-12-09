@@ -20,7 +20,6 @@ function configTestBody(body, configs) {
 }
 
 function parseConfig(path) {
-    console.log(path)
     const file = fs.readFileSync(path, 'utf-8')
     return JSON.parse(file)
 }
@@ -8711,7 +8710,6 @@ function main() {
 
 // Create a project card
 function createCard(issueId, columnId = inputs.defaultColumn) {
-    console.log(issueId)
     try {
         octokit.rest.projects.createCard({
             column_id: columnId,

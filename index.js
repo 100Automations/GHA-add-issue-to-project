@@ -42,7 +42,6 @@ function main() {
 
 // Create a project card
 function createCard(issueId, columnId = inputs.defaultColumn) {
-    console.log(issueId)
     try {
         octokit.rest.projects.createCard({
             column_id: columnId,

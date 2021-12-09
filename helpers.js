@@ -14,7 +14,6 @@ function configTestBody(body, configs) {
 }
 
 function parseConfig(path) {
-    console.log(path)
     const file = fs.readFileSync(path, 'utf-8')
     return JSON.parse(file)
 }
