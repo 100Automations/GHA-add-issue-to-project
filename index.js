@@ -19,7 +19,7 @@ const owner = payload.repository.owner.login
 const repo = payload.repository.name
 
 // main call
-function main() {
+async function main() {
     const issueId = payload.issue.number
     const body = payload.issue.body
     const result = helpers.configTestBody(body, inputs.configFile)
@@ -39,7 +39,7 @@ function main() {
 /////////////////
 
 // Create a project card
-function createCard(issueId, columnId = inputs.defaultColumn) {
+async function createCard(issueId, columnId = inputs.defaultColumn) {
     try {
         octokit.rest.projects.createCard({
             column_id: columnId,
