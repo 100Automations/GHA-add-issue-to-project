@@ -14,8 +14,6 @@ function helpersTests() {
     testEqual(helpers.parseConfig("test.json")[1].number === "1234", false)
 }
 
-
-
 function testEqual(result, expected) {
     if (result == expected) {
         console.log('Test Passed')
