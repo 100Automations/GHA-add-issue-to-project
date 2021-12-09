@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Move Issue
         id: api-json
-        uses: Aveline-art/miniature_octo_sniffle@main
+        uses: Aveline-art/miniature_octo_sniffle@master
         with:
           # required
           config-file: './\.github/workflows/moveIssues/config.json'
