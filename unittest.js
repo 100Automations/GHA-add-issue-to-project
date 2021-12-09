@@ -12,6 +12,21 @@ function helpersTests() {
     testEqual(helpers.parseConfig("unittest.json").length, 2)
     testEqual(helpers.parseConfig("unittest.json")[0].name, 'Aveline-art')
     testEqual(helpers.parseConfig("unittest.json")[1].number === "1234", false)
+
+    
+    const data = {
+        body: "### Dependency /n - [ ] #34",
+        labels: ['Good first issue', 'dependency']
+    }
+
+    const configs = [
+        {
+            body: "'### Dependency'/'### Dependencies'",
+            labels: 'dependency and not documentation',
+            column: 12345
+        }
+    ]
+    testEqual(helpers.configTestAll(data, configs), 12345)
 }
 
 function testEqual(result, expected) {

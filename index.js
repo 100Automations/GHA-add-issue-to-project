@@ -21,7 +21,7 @@ function main() {
     try {
         const issueId = payload.issue.id
         const body = payload.issue.body
-        const result = helpers.configTestBody(body, inputs.configFile)
+        const result = helpers.configTestAll(body, inputs.configFile)
 
         if (result) {
             createCard(issueId, result)
