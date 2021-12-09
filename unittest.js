@@ -2,10 +2,10 @@ const repl = require('./repl');
 const helpers = require('./helpers');
 
 function replTests() {
-    testEqual(repl.analyze("###Dependency", "###Dependency /n - [ ] #34"), true)
-    testEqual(repl.analyze("###Dependency", "##Dependency /n - [ ] #34"), false)
-    testEqual(repl.analyze("###Dependency/###Dependencies", "###Dependency /n - [ ] #34"), true)
-    testEqual(repl.analyze("###Dependency/##Dependencies", "###Dependencies /n - [ ] #34"), true)
+    testEqual(repl.analyze("'### Dependency'", "### Dependency /n - [ ] #34"), true)
+    testEqual(repl.analyze("'### Dependency'", "## Dependency /n - [ ] #34"), false)
+    testEqual(repl.analyze("'### Dependency'/'### Dependencies'", "### Dependency /n - [ ] #34"), true)
+    testEqual(repl.analyze("'### Dependency'/'## Dependencies'", "### Dependencies /n - [ ] #34"), true)
 }
 
 function helpersTests() {
