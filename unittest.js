@@ -9,9 +9,9 @@ function replTests() {
 }
 
 function helpersTests() {
-    testEqual(helpers.parseConfig("test.json").length, 2)
-    testEqual(helpers.parseConfig("test.json")[0].name, 'Aveline-art')
-    testEqual(helpers.parseConfig("test.json")[1].number === "1234", false)
+    testEqual(helpers.parseConfig("unittest.json").length, 2)
+    testEqual(helpers.parseConfig("unittest.json")[0].name, 'Aveline-art')
+    testEqual(helpers.parseConfig("unittest.json")[1].number === "1234", false)
 }
 
 function testEqual(result, expected) {
