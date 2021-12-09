@@ -21,7 +21,8 @@ function main() {
     try {
         const issueId = payload.issue.id
         const data = {
-            body: payload.issue.body
+            body: payload.issue.body,
+            labels: payload.issue.labels.map((label) => { return label.name }),
         }
         const result = helpers.configTestAll(data, inputs.configFile)
 

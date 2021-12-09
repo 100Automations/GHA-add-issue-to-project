@@ -3,7 +3,7 @@ description: 'Moves issues to columns based on a configuration of criteria'
 inputs:
   # Absolutely required to function
   config-file:
-    description: 'File containing the filters'
+    description: 'A JSON file containing an Array of configurations'
     required: true
   myToken:
     description: 'A valid API token scoped to post comments on the repo'

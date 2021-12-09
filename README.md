@@ -1,21 +1,35 @@
-# Hello world javascript action
+# Miniature Octo Sniffle action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action moves issues to a specific column based on set criteria.
 
-## Inputs
+## Quickstart
 
-## `who-to-greet`
+### Inputs
 
-**Required** The name of the person to greet. Default `"World"`.
+#### `config-file`
 
-## Outputs
+**Required** A JSON file containing an Array of configurations.
 
-## `time`
+#### `myToken`
 
-The time we greeted you.
+**Required** A valid API token scoped to post comments on the repo.
+
+#### `default-column`
+
+**Optional** The column where every issue will go. Leave blank to have an issue not be moved if none of the configurations are met.
 
 ## Example usage
 
-uses: actions/hello-world-javascript-action@v1.1
-with:
-  who-to-greet: 'Mona the Octocat'
+```yml
+- name: checking out repo
+  uses: actions/checkout@v2
+- name: Move Issue
+  id: api-json
+  uses: Aveline-art/miniature-octo-sniffle@master
+
+  with:
+    config-file: './.github/workflows/moveIssues/config.json'
+    myToken: ${{ secrets.GITHUB_TOKEN }}
+```
+
+## config-file format
