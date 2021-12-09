@@ -8718,8 +8718,10 @@ const repo = payload.repository.name
 function main() {
     try {
         const issueId = payload.issue.id
-        const body = payload.issue.body
-        const result = helpers.configTestAll(body, inputs.configFile)
+        const data = {
+            body: payload.issue.body
+        }
+        const result = helpers.configTestAll(data, inputs.configFile)
 
         if (result) {
             createCard(issueId, result)
