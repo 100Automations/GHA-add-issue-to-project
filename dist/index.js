@@ -30,70 +30,6 @@ module.exports = { configTestBody, parseConfig }
 
 /***/ }),
 
-/***/ 9605:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-// Imports
-const core = __nccwpck_require__(4550);
-const github = __nccwpck_require__(1805);
-const helpers = __nccwpck_require__(5872);
-
-// Globals
-const inputs = {
-    // Required
-    configFile: helpers.parseConfig(core.getInput('config-file')), // a json configuration
-    defaultColumn: core.getInput('default-column'), // a string of a default column id
-    myToken: core.getInput('myToken'), // a string containing the token, used only to verify octokit
-}
-
-console.log(inputs)
-
-const octokit = github.getOctokit(inputs.myToken)
-const payload = github.context.payload
-const owner = payload.repository.owner.login
-const repo = payload.repository.name
-
-// main call
-function main() {
-    const issueId = payload.issue.number
-    const body = payload.issue.body
-    const result = helpers.configTestBody(body, inputs.configFile)
-
-    if (result) {
-        createCard(issueId, result)
-    } else {
-        if (inputs.defaultColumn) {
-            createCard(issueId)
-        }
-    }
-}
-
-
-/////////////////
-/// API Calls ///
-/////////////////
-
-// Create a project card
-function createCard(issueId, columnId = inputs.defaultColumn) {
-    try {
-        octokit.rest.projects.createCard({
-            column_id: columnId,
-            content_id: issueId,
-            content_type: 'Issue',
-        });
-    } catch (error) {
-        core.setFailed(error.message);
-        core.setFailed(`Could not move issue #${issueId} to ${columnId}`)
-    }
-}
-
-main()
-
-
-module.exports = { configTestBody, parseConfig }
-
-/***/ }),
-
 /***/ 5115:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -8728,12 +8664,66 @@ module.exports = require("zlib");
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __nccwpck_require__(9605);
-/******/ 	module.exports = __webpack_exports__;
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+// Imports
+const core = __nccwpck_require__(4550);
+const github = __nccwpck_require__(1805);
+const helpers = __nccwpck_require__(5872);
+
+// Globals
+const inputs = {
+    // Required
+    configFile: helpers.parseConfig(core.getInput('config-file')), // a json configuration
+    defaultColumn: core.getInput('default-column'), // a string of a default column id
+    myToken: core.getInput('myToken'), // a string containing the token, used only to verify octokit
+}
+
+console.log(inputs)
+
+const octokit = github.getOctokit(inputs.myToken)
+const payload = github.context.payload
+const owner = payload.repository.owner.login
+const repo = payload.repository.name
+
+// main call
+function main() {
+    const issueId = payload.issue.number
+    const body = payload.issue.body
+    const result = helpers.configTestBody(body, inputs.configFile)
+
+    if (result) {
+        createCard(issueId, result)
+    } else {
+        if (inputs.defaultColumn) {
+            createCard(issueId)
+        }
+    }
+}
+
+
+/////////////////
+/// API Calls ///
+/////////////////
+
+// Create a project card
+function createCard(issueId, columnId = inputs.defaultColumn) {
+    try {
+        octokit.rest.projects.createCard({
+            column_id: columnId,
+            content_id: issueId,
+            content_type: 'Issue',
+        });
+    } catch (error) {
+        core.setFailed(error.message);
+        core.setFailed(`Could not move issue #${issueId} to ${columnId}`)
+    }
+}
+
+main()
+})();
+
+module.exports = __webpack_exports__;
 /******/ })()
 ;

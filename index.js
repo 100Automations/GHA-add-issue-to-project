@@ -53,6 +53,3 @@ function createCard(issueId, columnId = inputs.defaultColumn) {
 }
 
 main()
-
-
-module.exports = { configTestBody, parseConfig }
