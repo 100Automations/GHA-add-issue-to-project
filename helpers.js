@@ -1,7 +1,7 @@
-const fs = require('fs')
+// Imports
+const fs = require('fs');
+const repl = require('./repl')
 
-
-console.log(fs.readdirSync('./'))
 
 function configTestBody(body, configs) {
     for (const config of configs) {
