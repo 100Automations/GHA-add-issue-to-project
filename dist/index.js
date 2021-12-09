@@ -8688,7 +8688,7 @@ const repo = payload.repository.name
 // main call
 function main() {
     try {
-        const issueId = payload.issue.number
+        const issueId = payload.issue.id
         const body = payload.issue.body
         const result = helpers.configTestBody(body, inputs.configFile)
 
