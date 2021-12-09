@@ -1,0 +1,21 @@
+name: 'Miniature-Octo-Sniffle'
+description: 'Moves issues to columns based on a configuration of criteria'
+inputs:
+  # Absolutely required to function
+  config-file:
+    description: 'File containing the filters'
+    required: true
+  myToken:
+    description: 'A valid API token scoped to post comments on the repo'
+    required: true
+
+  # Not required to function
+  default-column:
+    description: 'The column where every issue will go. Leave blank to have an issue not be moved if config criteria are not met.'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'smile'  
+  color: 'yellow'

@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Aveline-art",
+        "number": 55,
+        "status": "closed"
+    },
+    {
+        "name": "octocat",
+        "number": 1234,
+        "status": "open"
+    }
+]

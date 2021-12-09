@@ -1,0 +1,18 @@
+name: Issue Trigger
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  test_miniature_octo_sniffle:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - name: Move Issue
+        id: api-json
+        uses: Aveline-art/miniature_octo_sniffle@main
+        with:
+          # required
+          config-file: './\.github/workflows/moveIssues/config.json'
+          myToken: ${{ secrets.GITHUB_TOKEN }}
+          # optional
