@@ -26,37 +26,12 @@ This action moves issues to a specific column based on set criteria.
 - name: Move Issue
   id: api-json
   uses: Aveline-art/miniature-octo-sniffle@master
-
   with:
     config-file: './.github/workflows/moveIssues/config.json'
     myToken: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-## Configuration JSON file format
-
-The configuration file which is fed into `config-file` must be in the format of an Array of key-value Objects. For the GitHub Action to function, the only key the Object truly needs is a `column` key, representing the column to move an issue to. The other keys, we will call criteria keys, since they represent certain criteria that must be met by an issue for it to be moved to the specified `column`.
-
-Outlined here are the possible criteria keys at this time. Further below are tips of wording each criteria to best fit your needs.
-
-| Criteria Keys    | Description |
-| ---------------- | ----------- |
-| body             | Criteria for the body of the issue |
-| labels           | Criteria for the labels of the issue |
-
-
-### Criteria Wording
-
-Criteria are analyzed through a custom logic interpreter, which uses `and`, `or` and `not` as part of its key syntax. To demonstrate through an example, the criteria `body: "dependency or dependencies"` means that the body of the issue being analyzed needs to contain the string `dependency` **or** `dependencies` in other to pass the criteria. If the other criteria are also met, then issue will be moved to the column specified in the `column` key.
-
-Do note that the criteria are not case-sensitive. For the above criteria, an issue's body containing "dependency" or "Dependency" would both pass the criteria.
-
-In addition to `and`, `or`, and `not`, the interpreter will also accept `,`, `/`, and `!` respectively in its place. For more complex criteria matching, one can also used `(), [] or {}` to block off code. An example of a complex query could be:
-
-`"('buggy code', dependency) or (enhancement and invalid)"`
-
-For the interpreter, since it uses white space to recognize key syntax, it is also recommended to use quotation marks to differentiate between strings. In the above, 'buggy code' is wrapped with quotation marks for the interpreter to understand it as one single phrase, rather than two separate ones. Without the quotations, there would be an error.
-
-## Sample configuration JSON
+## Anatomy of the JSON configuration file
 
 ```JSON
 [
@@ -67,11 +42,34 @@ For the interpreter, since it uses white space to recognize key syntax, it is al
   },
   {
     "body": "'Research and Development'",
-    "labels": "('buggy code', dependency) or (enhancement and invalid)",
+    "labels": "('Known Bug', dependency) or (enhancement and invalid)",
     "column": 55667788
   },
 ]
 ```
+*<p style="text-align: center;">An example of a configuration JSON file with 2 configurations. The key-value pairs within each configuration represents a criteria that must be fulfilled before the issue can be moved to the specified column.</p>*
+
+The key to using this GHA is through the configuration file, which is an `Array` of key-value `Objects`, which we will call *configuration*. Each *configuration* consists of a `column` key, and various other keys we will call *criteria*. These *criteria* are a set of conditions that must be fulfilled in order for the issue that triggered this GHA to move to the column specified by the `column` key. To understand more about how to understand each *criteria*, please read the [Criteria Wording](#criteria-wording) section.
+
+Outlined here are the possible *criteria*.
+
+| Criteria Keys    | Description |
+| ---------------- | ----------- |
+| body             | Criteria for the body of the issue |
+| labels           | Criteria for the labels of the issue |
+
+
+### Criteria Wording
+
+*Criteria* are defined by string that contains a bit of logic. This *logic string*, if you will, uses `and`, `or`, and `not` key words to convey user intent. For example, the *criteria*, `body: "dependency or dependencies"`, means that the *criteria* is met if the issue contains the strings 'dependenecy' or 'dependencies' anywhere in its body. Likewise the *criteria*, `labels: "'enhancement' and not 'documentation'"`, means that the *criteria* is met if the issue contains an 'enhancement' label but not a 'documentation' label.
+
+In addition to `and`, `or`, and `not`, the *logic string* interpreter will also accept `,`, `/`, and `!`, respectively, as shorthand. Also, for more complex criteria matching, the interpreter will accept `(), [] or {}` to control the order of interpretation.
+
+When wording a *criteria*, it is very important to get the syntax correctly. Here are some tips to make sure that you are getting the exact wording you want.
+
+- *Criterias* are not case-sensitive. For instance, if it checks for 'dependency' in the body, both 'dependency' or 'Dependency' in the body will pass the *criteria*
+- Whitespaces is significant in separating syntax from strings. If a string you want to match contain spaces, such as 'Known Bug', it is recommended to wrap it in quotes within the *logic string*. For example, the *criteria* `body: "Known Bug and Dependency"` will cause an error, but `body: "'Known Bug' and 'Dependency'"` will not.
+
 
 ## How do I find a column ID?
 

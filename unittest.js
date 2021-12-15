@@ -14,12 +14,12 @@ function helpersTests() {
     testEqual(helpers.parseConfig("unittest.json")[1].number === "1234", false)
 
     
-    const data = {
+    var data = {
         body: "### Dependency /n - [ ] #34",
         labels: ['Good first issue', 'dependency']
     }
 
-    const configs = [
+    var configs = [
         {
             body: "'### Dependency'/'### Dependencies'",
             labels: 'dependency and not documentation',
@@ -27,6 +27,48 @@ function helpersTests() {
         }
     ]
     testEqual(helpers.configTestAll(data, configs), 12345)
+
+    data = {
+        body: "",
+        labels: []
+    }
+
+    configs = [
+        {
+            body: "'### Dependency'/'### Dependencies'",
+            labels: 'dependency and not documentation',
+            column: 12345
+        }
+    ]
+    testEqual(helpers.configTestAll(data, configs), null)
+
+    data = {
+        body: "### Dependency",
+        labels: []
+    }
+
+    configs = [
+        {
+            body: "'### Dependency'/'### Dependencies'",
+            labels: 'dependency and not documentation',
+            column: 12345
+        }
+    ]
+    testEqual(helpers.configTestAll(data, configs), null)
+
+    data = {
+        body: "randomwords",
+        labels: ['dependency']
+    }
+
+    configs = [
+        {
+            body: "'### Dependency'/'### Dependencies'",
+            labels: 'dependency and not documentation',
+            column: 12345
+        }
+    ]
+    testEqual(helpers.configTestAll(data, configs), null)
 }
 
 function testEqual(result, expected) {
