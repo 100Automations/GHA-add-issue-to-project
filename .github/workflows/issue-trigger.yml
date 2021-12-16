@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Move Issue
         id: api-json
-        uses: Aveline-art/miniature-octo-sniffle@master
+        uses: Aveline-art/miniature-octo-sniffle@v0.0.1-alpha
 
         with:
           # required
