@@ -20,13 +20,14 @@ function configTestAll(data, configs) {
 /**
  * A function that assesses whether the data represents one specific configuration
  * @param {Obj} data Represents the data of the newly made issue
- * @param {Arr[Obj]} config Represents one config of an array of configurations
- * @returns A boolean representing if the data matched the tests in the specific config
+ * @param {Arr[Obj]} config Represents one config containing a set of criteria
+ * @returns A boolean representing if the data matched the criteria in the specific config
  */
 function configTest(data, config) {
     const keyceptions = ['column']
 
     const keys = Object.keys(config)
+    // each key is a different criteria
     for (const key of keys) {
 
         // Skips the column key, because that is not needed

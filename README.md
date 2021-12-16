@@ -59,7 +59,7 @@ Outlined here are the possible *criteria*.
 | labels           | Criteria for the labels of the issue |
 
 
-### Criteria Wording
+## Criteria Wording
 
 *Criteria* are defined by string that contains a bit of logic. This *logic string*, if you will, uses `and`, `or`, and `not` key words to convey user intent. For example, the *criteria*, `body: "dependency or dependencies"`, means that the *criteria* is met if the issue contains the strings 'dependenecy' or 'dependencies' anywhere in its body. Likewise the *criteria*, `labels: "'enhancement' and not 'documentation'"`, means that the *criteria* is met if the issue contains an 'enhancement' label but not a 'documentation' label.
 
@@ -69,6 +69,11 @@ When wording a *criteria*, it is very important to get the syntax correctly. Her
 
 - *Criterias* are not case-sensitive. For instance, if it checks for 'dependency' in the body, both 'dependency' or 'Dependency' in the body will pass the *criteria*
 - Whitespaces is significant in separating syntax from strings. If a string you want to match contain spaces, such as 'Known Bug', it is recommended to wrap it in quotes within the *logic string*. For example, the *criteria* `body: "Known Bug and Dependency"` will cause an error, but `body: "'Known Bug' and 'Dependency'"` will not.
+- *Configurations* are verified in order. This means that if an issue passes two configurations, the column this issue will ultimately go to is the one that comes first in the `config-file`.
+
+## Why do we use a logic interpreter?
+
+The interpreter is created as an easy and simple way for team members who have little to no coding knowledge to configure the GitHub Action to meet their project needs. In future iterations, the `config-file` will accept regex matching, as well as case-sensitive matching.
 
 
 ## How do I find a column ID?
