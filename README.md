@@ -67,13 +67,13 @@ In addition to `and`, `or`, and `not`, the *logic string* interpreter will also 
 
 When wording a *criteria*, it is very important to get the syntax correctly. Here are some tips to make sure that you are getting the exact wording you want.
 
-- *Criterias* are not case-sensitive. For instance, if it checks for 'dependency' in the body, both 'dependency' or 'Dependency' in the body will pass the *criteria*
+- *Criterias* are case-sensitive. For instance, if it checks for 'dependency' in the body, only 'dependency' and not 'Dependency' in the body will pass the *criteria*
 - Whitespaces is significant in separating syntax from strings. If a string you want to match contain spaces, such as 'Known Bug', it is recommended to wrap it in quotes within the *logic string*. For example, the *criteria* `body: "Known Bug and Dependency"` will cause an error, but `body: "'Known Bug' and 'Dependency'"` will not.
 - *Configurations* are verified in order. This means that if an issue passes two configurations, the column this issue will ultimately go to is the one that comes first in the `config-file`.
 
 ## Why do we use a logic interpreter?
 
-The interpreter is created as an easy and simple way for team members who have little to no coding knowledge to configure the GitHub Action to meet their project needs. In future iterations, the `config-file` will accept regex matching, as well as case-sensitive matching.
+The interpreter is created as an easy and simple way for team members who have little to no coding knowledge to configure the GitHub Action to meet their project needs. In future iterations, the `config-file` will accept regex matching.
 
 
 ## How do I find a column ID?
