@@ -35,6 +35,10 @@ function configTest(data, config) {
             continue
         }
 
+        if (!data[key]) {
+            return false
+        }
+
         if (repl.analyze(config[key], data[key])) {
             continue
         } else {
