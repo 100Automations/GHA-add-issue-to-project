@@ -25,7 +25,7 @@ This action moves issues to a specific column based on set criteria.
   uses: actions/checkout@v2
 - name: Move Issue
   id: api-json
-  uses: Aveline-art/miniature-octo-sniffle@master
+  uses: 100Automations/miniature-octo-sniffle@master
   with:
     config-file: './.github/workflows/moveIssues/config.json'
     myToken: ${{ secrets.GITHUB_TOKEN }}
