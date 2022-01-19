@@ -1,11 +1,11 @@
 # How to contribute
 For any contribution you had in mind, please open a detailed issue on what you are contributing and why. This way, there can be room to have a productive discussion before any code is written. It can be discussed if the contribution is a good fit for this project, fine tune contribution goals, and more. 
 
-Feel free to [OPTIONAL: slack me individually or] drop into the [100 Automations slack](https://hackforla.slack.com/archives/C018S5TCQE7) to reach out to me to ask any questions.
+Feel free to drop into the [100 Automations slack](https://hackforla.slack.com/archives/C018S5TCQE7) to reach out to me to ask any questions.
 
 ## Testing
 
-As of right now, there are no concrete testing practices. The tests that are currently implemented are done using [INSERT TEST IMPLEMENTATION IF APPLICABLE]
+As of right now, there are no concrete testing practices. The tests that are currently implemented are done using [unittest.js](https://github.com/100Automations/GHA-add-issue-to-project/blob/master/unittest.js)
 
 ## Submitting changes
 
