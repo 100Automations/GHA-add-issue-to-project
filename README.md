@@ -16,7 +16,7 @@ This action moves issues to a specific column based on set criteria.
 
 #### `default-column`
 
-**Optional** The column ID where every issue will go. Leave blank to have an issue not be moved if none of the configurations are met. Example: '123456'
+**Optional** The column ID where every issue will go. Leave blank to have an issue not be moved if none of the configurations are met. Example: '123456'. To locate the ID for a specific column, refer to [this section](https://github.com/100Automations/GHA-add-issue-to-project/blob/master/README.md#how-do-i-find-a-column-id).
 
 ## Example usage
 
