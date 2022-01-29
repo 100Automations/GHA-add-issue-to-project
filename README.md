@@ -1,4 +1,4 @@
-# Miniature Octo Sniffle action
+# GHA Add Issue to Project
 
 Often times, when an issue is created, it should move into the project board, where it can be organized. If an issue is not moved into the project board, or worse, moved into the wrong project board or wrong column, development and work on a project is stalled. By automatically placing newly created issues into an appropriate place, errors are lessened, and project workflow can be focused less on organizing the project, and more on delivering a product.
 
@@ -56,7 +56,7 @@ The GHA does not output any data. If it works as expected, it will simply return
   uses: actions/checkout@v2
 - name: Move Issue
   id: api-json
-  uses: 100Automations/miniature-octo-sniffle@master
+  uses: 100Automations/GHA-add-issue-to-project@master
   with:
     config-file: './.github/workflows/moveIssues/config.json'
     myToken: ${{ secrets.GITHUB_TOKEN }}
@@ -115,6 +115,6 @@ The easiest way would be to check the column link. This link can be found under 
 
 This will give you a link like so:
 
-`https://github.com/octocat/miniature-octo-sniffle/projects/1#column-11223344`
+`https://github.com/octocat/GHA-add-issue-to-project/projects/1#column-11223344`
 
 In this example, the digits after `column-` (11223344) is the column ID.
