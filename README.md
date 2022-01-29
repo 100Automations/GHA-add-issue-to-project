@@ -8,7 +8,7 @@ This GitHub Action (GHA), when triggered, is designed to move issues to a specif
 
 ### Automation triggers
 
-While there are many [GHA triggers](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows), this automation relies on an issue-based GitHub object to function correctly. Therefore setting any triggers unrelated to issues in your workflow file, will cause this GHA to return an error. Triggers that work with this GHA are:
+While there are many [GHA triggers](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows), this automation relies on an issue-based GitHub object to function correctly. Therefore setting any trigger unrelated to issues in your workflow file, _will_ cause this GHA to return an error. Triggers that work with this GHA are:
 
 
 - issue comment created
