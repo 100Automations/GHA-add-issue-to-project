@@ -8,7 +8,7 @@ This GitHub Action (GHA), when triggered, is designed to move issues to a specif
 
 ### Automation triggers
 
-While there are many [GHA triggers](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows), only a subset of them can be coded with the automation without triggering an error. The triggers that work best are:
+While there are many [GHA triggers](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows), this automation relies on an issue-based GitHub object to function correctly. Therefore setting any triggers unrelated to issues in your workflow file, will cause this GHA to return an error. Triggers that work with this GHA are:
 
 
 - issue comment created
@@ -33,17 +33,17 @@ While there are many [GHA triggers](https://docs.github.com/en/actions/using-wor
 
 ### Inputs
 
-#### `config-file`
+#### `config-file` (Required)
 
-**Required** A path to a JSON file containing an Array of configurations. Example: '.github/workflows/folders/config.json'
+A path to a JSON file containing an Array of configurations. Example: '.github/workflows/folders/config.json'
 
-#### `myToken`
+#### `myToken` (Required)
 
-**Required** A valid API token scoped to post comments on the repo.
+A valid API token scoped to post comments on the repo.
 
-#### `default-column`
+#### `default-column` (Optional)
 
-**Optional** The column ID where every issue will go. Leave blank to have an issue not be moved if none of the configurations are met. Example: '123456'. To locate the ID for a specific column, refer to [this section](https://github.com/100Automations/GHA-add-issue-to-project/blob/master/README.md#how-do-i-find-a-column-id).
+The column ID where every issue will go. Leave blank to have an issue not be moved if none of the configurations are met. Example: '123456'. To locate the ID for a specific column, refer to [this section](https://github.com/100Automations/GHA-add-issue-to-project/blob/master/README.md#how-do-i-find-a-column-id).
 
 ### Outputs
 
