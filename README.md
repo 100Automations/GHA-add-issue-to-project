@@ -1,14 +1,14 @@
 # GHA Add Issue to Project
 
-Often times, when an issue is created, it should move into the project board, where it can be organized. If an issue is not moved into the project board, or worse, moved into the wrong project board or wrong column, development and work on a project is stalled. By automatically placing newly created issues into an appropriate place, errors are lessened, and project workflow can be focused less on organizing the project, and more on delivering a product.
+If your team uses GitHub project boards to manage your repository's issues, making sure that all issues end up on the right board is crucial. If an issue is not moved into the project board, or worse, moved into the wrong project board or wrong column, development and work on a project is stalled. By automatically placing newly created issues into an appropriate place, errors are lessened, and project workflow can be focused less on organizing the project, and more on delivering a product.
 
-This workflow, when triggered, is designed to move issues to a specific column based on certain set of criteria such as a specific label, or specific phrase in the issue's body. This will prove helpful for members of a team who manages a project, such as project managers. By design, it abstracts a lot of the configuration into one file, making customization simple for team members who are not adept to coding syntax.
+This GitHub Action (GHA), when triggered, is designed to move issues to a specific column based on certain set of criteria such as a specific label, or specific phrase in the issue's body. This will prove helpful for members of a team who manages a project, such as project managers. By design, it abstracts a lot of the configuration into one file, making customization simple for team members who are not adept to coding syntax.
 
 ## Quickstart
 
 ### Automation triggers
 
-Any [GHA trigger](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) can technically trigger it, but most would result in an error. The triggers that work best are:
+While there are many [GHA triggers](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows), only a subset of them can be coded with the automation without triggering an error. The triggers that work best are:
 
 
 - issue comment created
