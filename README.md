@@ -1,14 +1,14 @@
 # GHA Add Issue to Project
 
-Often times, when an issue is created, it should move into the project board, where it can be organized. If an issue is not moved into the project board, or worse, moved into the wrong project board or wrong column, development and work on a project is stalled. By automatically placing newly created issues into an appropriate place, errors are lessened, and project workflow can be focused less on organizing the project, and more on delivering a product.
+If your team uses GitHub project boards to manage your repository's issues, making sure that all issues end up on the right board is crucial. If an issue is not moved into the project board, or worse, moved into the wrong project board or wrong column, development and work on a project is stalled. By automatically placing newly created issues into an appropriate place, errors are lessened, and project workflow can be focused less on organizing the project, and more on delivering a product.
 
-This workflow, when triggered, is designed to move issues to a specific column based on certain set of criteria such as a specific label, or specific phrase in the issue's body. This will prove helpful for members of a team who manages a project, such as project managers. By design, it abstracts a lot of the configuration into one file, making customization simple for team members who are not adept to coding syntax.
+This GitHub Action (GHA), when triggered, is designed to move issues to a specific column based on certain set of criteria such as a specific label, or specific phrase in the issue's body. This will prove helpful for members of a team who manages a project, such as project managers. By design, it abstracts a lot of the configuration into one file, making customization simple for team members who are not adept to coding syntax.
 
 ## Quickstart
 
 ### Automation triggers
 
-Any [GHA trigger](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) can technically trigger it, but most would result in an error. The triggers that work best are:
+While there are many [GHA triggers](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows), this automation relies on an issue-based GitHub object to function correctly. Therefore setting any trigger unrelated to issues in your workflow file, _will_ cause this GHA to return an error. Triggers that work with this GHA are:
 
 
 - issue comment created
@@ -33,17 +33,17 @@ Any [GHA trigger](https://docs.github.com/en/actions/using-workflows/events-that
 
 ### Inputs
 
-#### `config-file`
+#### `config-file` (Required)
 
-**Required** A path to a JSON file containing an Array of configurations. Example: '.github/workflows/folders/config.json'
+A path to a JSON file containing an Array of configurations. Example: '.github/workflows/folders/config.json'
 
-#### `myToken`
+#### `myToken` (Required)
 
-**Required** A valid API token scoped to post comments on the repo.
+A valid API token scoped to post comments on the repo.
 
-#### `default-column`
+#### `default-column` (Optional)
 
-**Optional** The column ID where every issue will go. Leave blank to have an issue not be moved if none of the configurations are met. Example: '123456'. To locate the ID for a specific column, refer to [this section](https://github.com/100Automations/GHA-add-issue-to-project/blob/master/README.md#how-do-i-find-a-column-id).
+The column ID where every issue will go. Leave blank to have an issue not be moved if none of the configurations are met. Example: '123456'. To locate the ID for a specific column, refer to [this section](https://github.com/100Automations/GHA-add-issue-to-project/blob/master/README.md#how-do-i-find-a-column-id).
 
 ### Outputs
 
