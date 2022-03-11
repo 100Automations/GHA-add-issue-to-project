@@ -1,4 +1,4 @@
-name: 'Miniature-Octo-Sniffle'
+name: 'GHA-add-issue-to-project'
 description: 'Moves issues to columns based on a configuration of criteria'
 inputs:
   # Absolutely required to function
