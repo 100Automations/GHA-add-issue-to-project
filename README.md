@@ -70,7 +70,7 @@ jobs:
           config-file: './.github/workflows/moveIssues/config.json'
           myToken: ${{ secrets.GITHUB_TOKEN }}
           # optional
-          default-column: 17121475
+          default-column: <Replace this with your default column number>
 ```
 
 ## Anatomy of the JSON configuration file
