@@ -52,14 +52,25 @@ The GHA does not output any data. If it works as expected, it will simply return
 ## Example usage
 
 ```yml
-- name: Checking out repo
-  uses: actions/checkout@v2
-- name: Move Issue
-  id: api-json
-  uses: 100Automations/GHA-add-issue-to-project@master
-  with:
-    config-file: './.github/workflows/moveIssues/config.json'
-    myToken: ${{ secrets.GITHUB_TOKEN }}
+name: Issue Trigger
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  Sort-Opened-Issue-Into-Columns:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out repo
+        uses: actions/checkout@v2
+      - name: Move Issue
+        uses: 100Automations/GHA-add-issue-to-project@v0.0.1-alpha
+        with:
+          # required
+          config-file: './.github/workflows/moveIssues/config.json'
+          myToken: ${{ secrets.GITHUB_TOKEN }}
+          # optional
+          default-column: 17121475
 ```
 
 ## Anatomy of the JSON configuration file
@@ -92,7 +103,7 @@ Outlined here are the possible *criteria*.
 
 ## Criteria Wording
 
-*Criteria* are defined by string that contains a bit of logic. This *logic string*, if you will, uses `and`, `or`, and `not` key words to convey user intent. For example, the *criteria*, `body: "dependency or dependencies"`, means that the *criteria* is met if the issue contains the strings 'dependenecy' or 'dependencies' anywhere in its body. Likewise the *criteria*, `labels: "'enhancement' and not 'documentation'"`, means that the *criteria* is met if the issue contains an 'enhancement' label but not a 'documentation' label.
+*Criteria* are defined by string that contains a bit of logic. This *logic string*, if you will, uses `and`, `or`, and `not` key words to convey user intent. For example, the *criteria*, `body: "dependency or dependencies"`, means that the *criteria* is met if the issue contains 'dependency' or 'dependencies' anywhere in its body. Likewise the *criteria*, `labels: "'enhancement' and not 'documentation'"`, means that the *criteria* is met if the issue contains an 'enhancement' label but not a 'documentation' label.
 
 In addition to `and`, `or`, and `not`, the *logic string* interpreter will also accept `,`, `/`, and `!`, respectively, as shorthand. Also, for more complex criteria matching, the interpreter will accept `(), [] or {}` to control the order of interpretation.
 
@@ -100,7 +111,7 @@ When wording a *criteria*, it is very important to get the syntax correctly. Her
 
 - *Criterias* are case-sensitive. For instance, if it checks for 'dependency' in the body, only 'dependency' and not 'Dependency' in the body will pass the *criteria*
 - Whitespaces is significant in separating syntax from strings. If a string you want to match contain spaces, such as 'Known Bug', it is recommended to wrap it in quotes within the *logic string*. For example, the *criteria* `body: "Known Bug and Dependency"` will cause an error, but `body: "'Known Bug' and 'Dependency'"` will not.
-- *Configurations* are verified in order. This means that if an issue passes two configurations, the column this issue will ultimately go to is the one that comes first in the `config-file`.
+- *Configurations* are verified in order. This means that if an issue passes two configurations, this issue will ultimately go to is the column that comes first in the `config-file`.
 
 ## Why do we use a logic interpreter?
 
