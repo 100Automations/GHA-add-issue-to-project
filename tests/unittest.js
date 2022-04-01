@@ -1,5 +1,5 @@
-const repl = require('./repl');
-const helpers = require('./helpers');
+const repl = require('../src/repl');
+const helpers = require('../src/helpers');
 
 function replTests() {
     testEqual(repl.analyze("'### Dependency'", "### Dependency /n - [ ] #34"), true)
