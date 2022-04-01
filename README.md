@@ -129,3 +129,13 @@ This will give you a link like so:
 `https://github.com/octocat/GHA-add-issue-to-project/projects/1#column-11223344`
 
 In this example, the digits after `column-` (11223344) is the column ID.
+
+## I've never done a GitHub Action before. What's a quick way to get this etup?
+
+1. See [this quick tutorial](https://docs.github.com/en/actions/quickstart) to get situated with GitHub Actions. It should take about 10 minutes or less.
+2. Copy and paste the code from [example usage](https://github.com/100Automations/GHA-add-issue-to-project#example-usage) into a .yml file in `.github/workflows`.
+3. In `.github/workflows`, create a folder called `moveIssues`.
+4. Inside of `moveIssues` create a file called `config.json`.
+5. Create your desired configuration, using the [example](https://github.com/100Automations/GHA-add-issue-to-project#anatomy-of-the-json-configuration-file) as a guide.
+
+With this, all newly opened issues should move to either the columns specified in your config file, or to the default column specified in your GitHub Action.
