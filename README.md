@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checking out repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Move Issue
         uses: 100Automations/GHA-add-issue-to-project@v0.0.1-alpha
         with:
